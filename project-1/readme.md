@@ -1,9 +1,34 @@
-https://www.youtube.com/watch?v=SLB_c_ayRMo&list=PPSV ==> Tutorial Terraform Course - Automate your AWS cloud infrastructure
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance ==> resource types can be found here along with providers
+Terraform AWS Automation Tutorial
+This project demonstrates how to use Terraform to automate infrastructure provisioning on AWS.
 
-commands
+📺 Tutorial Source
 
-terraform init ==> downloads the provider plugins from registry. Also downloads modules
-terraform plan ==> compares tfstate with current configs and tells what going to be created if we run apply command
-terraform apply ==> can be run w/o plan. it applies the plan created. It requires manual intervention
-terraform apply -auto-approve ==> It doesn't require manual intervention
+Watch: Terraform Course - Automate your AWS cloud infrastructure
+
+🔧 Terraform Commands
+Command	Description
+terraform init	Initializes the directory and downloads the necessary provider plugins and modules.
+terraform plan	Shows the execution plan by comparing the current state with configuration files.
+terraform apply	Applies the changes required to reach the desired state. Requires manual approval.
+terraform apply -auto-approve	Applies changes without prompting for manual confirmation.
+
+📚 AWS Resource Documentation
+All available AWS resources and providers can be explored here:
+👉 Terraform AWS Provider Documentation
+
+📂 Project Structure
+bash
+Copy
+Edit
+.
+├── main.tf            # Main Terraform configuration
+├── variables.tf       # Input variable definitions
+├── outputs.tf         # Output values
+└── README.md          # This file
+🚀 Quick Start
+bash
+Copy
+Edit
+terraform init
+terraform plan
+terraform apply         # or use -auto-approve for automation
