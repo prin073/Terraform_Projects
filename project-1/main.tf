@@ -12,8 +12,8 @@ terraform {
 provider "aws" {
 
     region = "us-east-1"
-    access_key = "AKIA5AFL4HHR672M3N6X"
-    secret_key = "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"
+    access_key = ""
+    secret_key = ""
   
 }
 
@@ -21,14 +21,14 @@ provider "aws" {
 
 //below with create an ec2 instance. ami is image name of the server to be created(In this case I am creating an ubuntu instance)
 
-resource "aws_instance" "my-first-server" {
+resource "aws_instance" "my-second-server" {
 
     ami = "ami-084568db4383264d4"
     instance_type = "t2.micro"
 
     //not mandatory, it just adds a tag to the instance so that if we have multiple instances we can filter out it on AWS UI
     tags = {
-        # Name="ubuntu"
+        Name="ubuntu"
     }
   
 }
