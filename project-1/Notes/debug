@@ -1,0 +1,55 @@
+🔍 Top 3 Final Checks
+✅ 1. Did You Try Accessing With http://<public-ip>?
+Use HTTP, not HTTPS. Apache on port 80 doesn't handle HTTPS unless you configured SSL separately.
+
+Example:
+
+
+http://3.91.XX.XX
+✅ 2. Verify Public IP Was Actually Assigned
+Run this on the instance:
+
+curl ifconfig.me
+This will return the external public IP your server sees.
+
+Compare it with the AWS Console public IP.
+
+If it returns a private IP (like 10.0.x.x), then:
+
+associate_public_ip_address = true didn’t take effect, likely because:
+
+You’re using a custom VPC and subnet, and didn’t enable auto-assign public IP at the subnet level.
+
+✅ Solution:
+You need to explicitly set this in Terraform (which you already did), and make sure subnet settings allow it.
+
+Fix the subnet using AWS Console:
+
+Go to VPC → Subnets → subnet-1
+
+Click "Edit subnet settings"
+
+Enable: Auto-assign public IPv4 address
+
+✅ 3. Check Network Interface
+Run this to confirm public IP attached:
+
+bash
+Copy
+Edit
+ip addr show
+If you don’t see an interface with a public IP, then again the IP was not properly assigned.
+
+🧩 Final Fix Recommendation
+If you're using this config block in aws_instance:
+
+hcl
+Copy
+Edit
+associate_public_ip_address = true
+But still no public IP, then your subnet defaults are blocking the assignment.
+
+🔧 Two Fixes:
+Terraform fix: Replace with an aws_eip attachment if you want to always get a public IP reliably.
+
+Or simpler: Just edit subnet in AWS Console and enable auto-assign public IPv4.
