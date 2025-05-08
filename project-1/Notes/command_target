@@ -1,0 +1,6 @@
+Selective resource apply or destroy from the tf file
+│ Note that the -target option is not suitable for routine use, and is provided only for exceptional situations such as recovering from errors or mistakes, or when
+│ Terraform specifically suggests to use it as part of an error message.
+
+terraform apply -target aws_instance.web-server-instance
+terraform destroy -target aws_instance.web-server-instance

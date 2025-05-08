@@ -1,0 +1,9 @@
+1.output "<some_name>" {
+
+    value = <resource_type>.<name>.<field>
+}
+
+it will print the deployed resources field in the console. Similar to terraform state show <resource_type>.<name> command.
+To know the field name use terraform state show <resource_type>.<name> command and use in the output
+
+2. run tf output: command in to get all output variables value in the console

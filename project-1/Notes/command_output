@@ -1,0 +1,40 @@
+In Terraform, the data keyword is used to define a data source, which allows you to fetch information from existing infrastructure or external systems that you do not manage directly with your Terraform code.
+
+data "<PROVIDER>_<DATA_SOURCE_TYPE>" "<NAME>" {
+  # configuration arguments
+}
+
+🔹 Example 1: Get latest AMI from AWS
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"] # Canonical
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+}
+
+
+Then you can reference the AMI ID like:
+
+resource "aws_instance" "example" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+}
+
+🔹 Example 2: Read a file
+
+data "template_file" "example" {
+  template = file("${path.module}/script.sh")
+}
+
+🔹 When to use data:
+To reference existing infrastructure (e.g., VPCs, Subnets, AMIs)
+
+To fetch dynamic or computed values
+
+To read files or external templates
+
+To use outputs from other tools or configurations

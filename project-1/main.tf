@@ -222,8 +222,21 @@ resource "aws_instance" "web-server-instance" {
   tags = {
     Name = "web-server-instance"
   }
-
   
 }
 
+#To log into the console else always have to use tf state show command to know the IP of deployed server
+#server_private_ip = "10.0.0.37"
+# server_public_ip = "13.216.239.205"
 
+output "server_public_ip" {
+
+  value = aws_instance.web-server-instance.public_ip
+  
+}
+
+output "server_private_ip" {
+
+  value = aws_instance.web-server-instance.private_ip
+  
+}
