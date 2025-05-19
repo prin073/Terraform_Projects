@@ -1,0 +1,75 @@
+https://www.youtube.com/watch?v=9iPz0cPpWlM ==> USER
+
+https://www.youtube.com/watch?v=_AI7fromCcs ==> GROUP
+
+https://www.youtube.com/watch?v=_bwOIKRLImM ==> POLICY
+
+https://www.youtube.com/watch?v=7DLD443HTM4
+
+https://www.youtube.com/watch?v=XgLctgRh_7g
+
+arn = Amazon Resource Name[Unique Identifier for a resource created]
+ami = Amazon Machine Image
+
+Steps to create IAM
+1.Create an IAM user, 
+2.create a group, 
+3.assign policy to the group, 
+4.add user to the group. User will have the acess of the policy
+
+Note:
+Policy can be directly assigned to the user but it's not recommended.
+
+
+🧭 Why Use Roles in AWS?
+Temporary access: Ideal for granting access for a limited time.
+
+Cross-account access: Allow a user or service from one AWS account to access resources in another.
+
+Service access: Allow AWS services (like EC2, Lambda) to access other AWS services securely.
+
+Federated access: Enable users from outside AWS (e.g., corporate directory) to access AWS resources.
+
+🔧 How to Create a Role in AWS (via Console)
+Step 1: Open IAM Dashboard
+Go to: https://console.aws.amazon.com/iam/
+
+Step 2: Choose "Roles" → Click "Create role"
+Step 3: Select Trusted Entity Type
+Choose who or what will assume the role:
+
+AWS service (e.g., EC2, Lambda)
+
+Another AWS account
+
+Web identity (e.g., Cognito, Google, Facebook)
+
+SAML 2.0 federation
+
+Step 4: Attach Policies (Permissions)
+Choose one or more policies that define what this role can do.
+
+Example:
+
+AmazonS3FullAccess
+
+AmazonEC2ReadOnlyAccess
+
+Step 5: Name and Create
+Give the role a name (e.g., EC2S3AccessRole)
+
+Add an optional description or tags
+
+Click Create role
+
+✅ Example Use Case
+Allow EC2 instance to access S3 bucket:
+
+Create a role with trusted entity = EC2
+
+Attach AmazonS3ReadOnlyAccess policy
+
+Assign this role to an EC2 instance via instance profile
+
+This allows the EC2 instance to access S3 without using credentials.
+

@@ -1,0 +1,11 @@
+TO DO
+- Backend + provider config
+- EC2 instances
+- S3 Bukcet
+- VPC
+    - Subnet
+- Security groups + rules
+- Application Load Balancer
+    - ALB target group + attachment
+- Route 53 Zone + record
+- RDS instance

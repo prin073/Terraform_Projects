@@ -1,4 +1,5 @@
-In Terraform, the data keyword is used to define a data source, which allows you to fetch information from existing infrastructure or external systems that you do not manage directly with your Terraform code.
+In Terraform, the data keyword is used to define a data source, which allows you to fetch information from existing 
+infrastructure or external systems that you do not manage directly with your Terraform code.
 
 data "<PROVIDER>_<DATA_SOURCE_TYPE>" "<NAME>" {
   # configuration arguments

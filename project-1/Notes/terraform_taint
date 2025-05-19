@@ -1,0 +1,27 @@
+✅ terraform taint — What It Does
+The terraform taint command marks a resource for destruction so it is recreated during the next terraform apply.
+
+This is especially useful when:
+
+You changed user_data (which only runs on EC2 creation).
+
+You want to force re-provisioning without changing other config.
+
+✅ Example
+To force recreation of your EC2 instances:
+
+bash
+Copy
+Edit
+terraform taint aws_instance.web_app_instance1
+terraform taint aws_instance.web_app_instance2
+Then apply:
+
+terraform apply
+Terraform will:
+
+Destroy both instances.
+
+Create fresh instances.
+
+Run updated user_data.

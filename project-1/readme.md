@@ -35,3 +35,16 @@ terraform init
 terraform plan
 terraform apply         # or use -auto-approve for automation
 ```
+
+```bash
+Links
+Resources:
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance ==> EC2 Instance
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc ==> VPC
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet ==> VPC Subnet
+
+
+```

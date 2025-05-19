@@ -164,6 +164,8 @@ resource "aws_security_group" "allow_web" {
   }
   
 }
+
+//Note: 7 and 8 steps are not working currently. web page is not returning response
 #7. Create a network interface with an IP in the subnet that was created in step4
   //assigns a private IP address
   

@@ -1,0 +1,58 @@
+In Terraform (.tf files), a variable block is used to define input variables, which allow you to customize your configurations without hardcoding values. Here's the basic syntax and some examples:
+
+🔧 Basic Syntax
+hcl
+Copy
+Edit
+variable "variable_name" {
+  type        = <type>
+  description = "Description of the variable"
+  default     = <default_value>  # Optional
+}
+✅ Example 1: String variable with default
+hcl
+Copy
+Edit
+variable "region" {
+  type        = string
+  description = "AWS region"
+  default     = "us-west-2"
+}
+✅ Example 2: Number variable
+hcl
+Copy
+Edit
+variable "instance_count" {
+  type        = number
+  description = "Number of EC2 instances"
+  default     = 2
+}
+✅ Example 3: List variable
+hcl
+Copy
+Edit
+variable "availability_zones" {
+  type        = list(string)
+  description = "List of availability zones"
+  default     = ["us-west-2a", "us-west-2b"]
+}
+✅ Example 4: Map variable
+hcl
+Copy
+Edit
+variable "tags" {
+  type = map(string)
+  default = {
+    Environment = "dev"
+    Owner       = "team-x"
+  }
+}
+How to Use a Variable
+In your Terraform configuration, you use the variable like this:
+
+hcl
+Copy
+Edit
+provider "aws" {
+  region = var.region
+}
