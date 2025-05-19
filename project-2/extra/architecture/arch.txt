@@ -1,0 +1,91 @@
+🧱 1. Getting Ready – Find the Default Network (VPC and Subnets)
+Before building anything:
+
+VPC = your cloud "neighborhood" (a virtual private network).
+
+Subnets = different "streets" in that neighborhood.
+
+You tell AWS:
+
+"Hey, give me the default network and the streets (subnets) in it – I’ll build my stuff there."
+
+🔐 2. Security Group – Set the Rules for the Doors
+Think of a security group like a bouncer at the door:
+
+Who can come in and what door (port) they can use.
+
+Who can go out.
+
+You tell the bouncer:
+
+Allow people to come in through port 8080 (our web app).
+
+Also allow port 80 (standard web).
+
+And let me in via SSH on port 22 to manage the servers.
+
+Let all traffic go out freely.
+
+🖥️ 3. Create Two Web Servers (EC2 Instances)
+You create two virtual computers (servers) in the cloud:
+
+Each one says "Hello World" in a file.
+
+Each one runs a small web server (like a tiny version of Apache or Nginx).
+
+They serve their "Hello World" message on port 8080.
+
+They’re like:
+
+“I’m a tiny website! Visit me on 8080!”
+
+🌐 4. Create a Load Balancer – Like a Traffic Cop
+Imagine a traffic cop standing in front of the two web servers.
+
+The Load Balancer:
+
+Accepts visitors from the internet on port 80 (normal browser access).
+
+Then it forwards them to one of the web servers on port 8080.
+
+It also checks if a server is healthy before sending traffic to it.
+
+So it’s like:
+
+"Welcome! Let me direct you to a healthy server."
+
+🎯 5. Target Group – Who the Load Balancer Can Talk To
+You tell the Load Balancer:
+
+"These are the servers (EC2 instances) you can send visitors to."
+
+This is called a Target Group, and you add both servers to it.
+
+🔗 6. Listener – What Should Happen When Someone Visits
+The Listener is like the Load Balancer’s ear:
+
+It listens on port 80.
+
+When someone arrives, it says:
+
+"Okay, let’s forward them to one of the healthy web servers on 8080."
+
+🌍 7. Future Step – Add a Domain Name (DNS)
+Right now, visitors access your site using a long AWS link like:
+
+arduino
+Copy
+Edit
+http://load-balancer-1234.amazonaws.com
+With Route 53, you can later set a custom domain like:
+
+arduino
+Copy
+Edit
+http://mywebsite.com
+So people don’t have to remember that ugly link.
+
+💡 The Big Picture
+Visitors 🧑‍💻 → Load Balancer 🌐 (port 80) → Listener 🎧 → Target Group 🎯 → Web Server 🖥️ (port 8080) → "Hello World" page
+
+That’s it!
