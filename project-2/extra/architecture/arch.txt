@@ -73,15 +73,9 @@ When someone arrives, it says:
 🌍 7. Future Step – Add a Domain Name (DNS)
 Right now, visitors access your site using a long AWS link like:
 
-arduino
-Copy
-Edit
 http://load-balancer-1234.amazonaws.com
 With Route 53, you can later set a custom domain like:
 
-arduino
-Copy
-Edit
 http://mywebsite.com
 So people don’t have to remember that ugly link.
 
