@@ -1,0 +1,28 @@
+1.Input variables
+    var.<name>
+Ex:
+
+variable "instance_type" {
+
+    description = "ec2 instance type"
+    type = string
+    default = "t2.micro"
+}
+
+2. Lcoal variables
+    local.<name>
+
+Ex: 
+locals {
+
+    service_name = "My Service"
+    owner = "Devops Directive"
+}
+
+3. Output variables
+
+    Ex:
+    output "instance_ip_addr" {
+
+        value = aws_instance.instance.public_ip
+    }

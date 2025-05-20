@@ -1,0 +1,11 @@
+1.
+
+AWS_PROFILE="terraform-course" terraform console -var="db_pass=<VALUE>"
+After that > will open
+> var.db_pass ==> To check the value is being set correctly
+
+
+2.
+If it still fails, enable debug logging:
+TF_LOG=DEBUG AWS_PROFILE="terraform-course" terraform apply -var="db_pass=<VALUE>"
+

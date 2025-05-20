@@ -1,0 +1,9 @@
+1.Sensitive data 
+    Sensitive = true
+
+2.Pass to terraform apply with;
+    TF_VAR_variable
+    -var(retrieved from secret manager at runtime)
+
+3. Can also use external secret store
+Ex: AWS Secrets Manager(SSM)

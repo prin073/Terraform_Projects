@@ -68,7 +68,7 @@ resource "aws_vpc" "first-vpc" {
 }
 
 #2. Create Internet Gateway
-  // To have a public IP and access the wbe-server through internet, we should have a Internet Gateway
+  // To have a public IP and access the web-server through internet, we should have a Internet Gateway
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.first-vpc.id
 

@@ -85,55 +85,6 @@ resource "aws_security_group" "sg" {
   }
 }
 
-# # Ingress rule (HTTP 8080)
-# resource "aws_security_group_rule" "allow_http_inbound" {
-#   type = "ingress"
-#   security_group_id = aws_security_group.sg.id
-#   from_port = 8080
-#   to_port = 8080
-#   protocol = "tcp"
-#   cidr_blocks = ["0.0.0.0/0"] #allows all inbound IP
-# }
-
-# resource "aws_security_group_rule" "allow_http_80" {
-#   type              = "ingress"
-#   security_group_id = aws_security_group.sg.id
-#   from_port         = 80
-#   to_port           = 80
-#   protocol          = "tcp"
-#   cidr_blocks       = ["0.0.0.0/0"]
-# }
-
-
-# resource "aws_security_group_rule" "allow_ssh_inbound" {
-#   type = "ingress"
-#   security_group_id = aws_security_group.sg.id
-#   from_port = 22
-#   to_port = 22
-#   protocol = "tcp"
-#   cidr_blocks = ["0.0.0.0/0"] #allows all inbound IP
-# }
-
-# # To allow access from command line or mysql workbench
-# resource "aws_security_group_rule" "allow_mysql_inbound" {
-#   type              = "ingress"
-#   from_port         = 3306
-#   to_port           = 3306
-#   protocol          = "tcp"
-#   security_group_id = aws_security_group.sg.id
-#   cidr_blocks       = ["0.0.0.0/0"]
-# }
-
-
-# # Egress rule (Allow all)
-# resource "aws_security_group_rule" "allow_http_outbound" {
-#   type = "egress"
-#   security_group_id = aws_security_group.sg.id
-#   from_port = 0
-#   to_port = 0
-#   protocol = "-1" # all protocol
-#   cidr_blocks = ["0.0.0.0/0"] #allows all inbound IP
-# }
 
 # Application Load Balancer
 resource "aws_lb" "load_balancer" {
@@ -188,58 +139,8 @@ resource "aws_lb_listener" "lb_listner" {
 }
 
 
-# resource "aws_lb_listener" "lb_listner" {
-#   load_balancer_arn = aws_lb.load_balancer.arn
-#   port = 80
-#   protocol = "HTTP"
-
-#   #By default return a simple 404 page
-#   default_action {
-#     type = "fixed-response"
-#     fixed_response {
-#       content_type = "text/plain"
-#       message_body = "404: page not found"
-#       status_code = 404
-#     }
-#   }
-# }
-
-# Listener Rule
-# resource "aws_lb_listener_rule" "listner_rule" {
-#   listener_arn = aws_lb_listener.lb_listner.arn
-
-#   condition {
-#     path_pattern {
-#       values = [ "*" ]
-#     }
-#   }
-
-#   action {
-#     type = "forward"
-#     target_group_arn = aws_lb_target_group.lb_target_group.arn
-#   }
-# }
-
 
 #TODO: route 53 for dns so that we can type host name in browser and access it
-
-# resource "aws_route53_zone" "primary" {
-#   name="princekumar.infinityfreeapp.com"
-  
-# }
-
-# resource "aws_route53_record" "root" {
-#   zone_id = aws_route53_zone.primary.zone_id
-#   name = "princekumar.infinityfreeapp.com"
-#   type = "A"
-#   alias {
-#     name = aws_lb.load_balancer.dns_name
-#     zone_id = aws_lb.load_balancer.zone_id
-#     evaluate_target_health = true
-#   }
-# }
-
-
 # At last add name server from route 53 to your domain. ABove domain is not working so access the api using alb dns name
 
 #RDS
